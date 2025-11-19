@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note"
+    name="elsya-custom-footnote" default-locale="en-US">
+  <info>
+    <title>Elsya Custom Footnote Style</title>
+    <id>elsya-custom-footnote</id>
+    <category citation-format="note"/>
+    <updated>2025-11-19T00:00:00Z</updated>
+  </info>
+
+  <macro name="author">
+    <names variable="author">
+      <name form="long" initialize="false" delimiter=", " name-as-sort-order="all"/>
+    </names>
+  </macro>
+
+  <macro name="title">
+    <choose>
+      <if type="book">
+        <text variable="title" font-style="italic"/>
+      </if>
+      <else-if type="article-journal">
+        <text variable="title" font-style="italic"/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="journal">
+    <text variable="container-title" font-style="italic"/>
+    <text variable="volume" prefix=" " />
+    <text variable="issue" prefix="(" suffix=")"/>
+  </macro>
+
+  <citation>
+    <layout suffix=".">
+      <text macro="author"/>
+      <text variable="issued" prefix=". (" suffix=")."/>
+      <text macro="title" prefix=" "/>
+      <choose>
+        <if type="book">
+          <text variable="publisher" prefix=". " suffix=","/>
+          <text variable="page" prefix=" h. "/>
+        </if>
+        <else-if type="article-journal">
+          <text macro="journal" prefix=". "/>
+          <text variable="page" prefix=", "/>
+          <text variable="DOI" prefix=". https://doi.org/"/>
+        </else-if>
+      </choose>
+    </layout>
+  </citation>
+
+  <bibliography>
+    <layout>
+      <text macro="author"/>
+    </layout>
+  </bibliography>
+
+</style>
